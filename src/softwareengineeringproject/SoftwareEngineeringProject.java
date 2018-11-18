@@ -21,14 +21,28 @@ public class SoftwareEngineeringProject {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        //CustomerInterface customer_interface = new CustomerInterface();
         
-        //customer_interface.DisplayWelcome();
+        Scanner scan = new Scanner(System.in);
+        int option;
+        System.out.println("1.-Customer mode\n2.-Manager Mode\nSelect an option: ");
         
+        option = scan.nextInt();
+        
+        CustomerInterface customer_interface = new CustomerInterface();
         InventoryManager inventoryManager = new InventoryManager();
-        inventoryManager.ScanItems();
-        
-        
+
+        switch(option){
+            
+            case 1: customer_interface.DisplayWelcome();
+            break;
+            
+            case 2: inventoryManager.ScanItems();
+            break;
+            
+            default: System.out.println("Invalid input!");
+            break;
+            
+        }
         
     }
     

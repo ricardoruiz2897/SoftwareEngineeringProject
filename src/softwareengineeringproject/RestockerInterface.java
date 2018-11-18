@@ -46,7 +46,7 @@ public class RestockerInterface {
     public int getQuantity(String name){
         
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter quatity for " + name + " : ");
+        System.out.print("Enter quantity for " + name + " : ");
         
         return(scan.nextInt());
         
