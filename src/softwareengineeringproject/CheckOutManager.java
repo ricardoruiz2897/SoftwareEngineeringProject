@@ -28,8 +28,11 @@ public class CheckOutManager {
         
         double Total;
         CustomerInterface customer_interface = new CustomerInterface();
+        
         //Get scanned items.
         scanned_items = itemScanner.scanItems();
+        
+        if(scanned_items == null){ customer_interface.DisplayWelcome(); }
         
         //Show the scanned items in the customer interface.
         customer_interface.DisplayScannedItems(scanned_items);
@@ -40,11 +43,70 @@ public class CheckOutManager {
         //Display the total.
         customer_interface.DisplayTotal(Total);
         
-        //Request Payment
-        payment_method = customer_interface.Request_Payment();
+        String[] paymentInfo = new String[2];
         
-        //Print receipt.
-        receiptPrinter.PrintReceipt(scanned_items, Total);
+        String cardNumber = new String();
+        String auth_number = new String();
+        
+        boolean terminate = false;
+        
+        while(true){
+            
+            //Request Payment
+            payment_method = customer_interface.Request_Payment();
+            
+            if(payment_method == 1){
+                
+                //Call Payment with Card Payment.
+                paymentInfo = paymentManager.CardPayment(Total);
+                
+                if(paymentInfo[0].equals("-1")){
+                    
+                    //Card was denied.
+                    customer_interface.CardPaymentDenied();
+                    
+                }else{
+                    
+                    //Extact the payment info.
+                    cardNumber = paymentInfo[1];
+                    auth_number = paymentInfo[0];
+                    break;
+                    
+                }
+                
+                
+            } else if(payment_method == 2){
+                
+                //Cash payment.
+                if(paymentManager.CashPayment(Total)){
+                    
+                    //Since no card number or authorization number is needed.
+                    cardNumber = "----";
+                    auth_number = "----";
+                    break;
+                    
+                }else{
+                    
+                    //Cancel transaction.
+                    terminate = true;
+                    break;
+                }
+                
+            } else{
+                
+                //Transaction is cancelled.
+                
+            }
+            
+        }
+        
+        if(terminate){
+            customer_interface.Terminate();
+        }else{
+            //Print receipt.
+            receiptPrinter.PrintReceipt(scanned_items, Total, cardNumber, auth_number);
+            customer_interface.Completed();
+        }
         
     }
     
@@ -52,11 +114,14 @@ public class CheckOutManager {
         
         double total_price= 0;
         
-        for(Item i : items){ total_price += i.Price; }
+        for(Item i : items){ 
+        
+            total_price += i.Price; 
+        
+        }
         
         return total_price;
         
     }
-    
     
 }

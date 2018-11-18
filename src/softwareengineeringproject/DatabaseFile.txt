@@ -1,0 +1,3 @@
+Milk,3.25,false,0,100
+Sausage,2.25,false,0,10
+Budlight,1.25,true,0,1000

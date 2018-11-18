@@ -14,22 +14,43 @@ import java.util.ArrayList;
 
 public class ReceiptPrinter {
     
-    public void PrintReceipt(ArrayList<Item> scannedItems, double Total){
+    public void PrintReceipt(ArrayList<Item> scannedItems, double Total, String cardNumber, String auth_number){
         
-        //Total with tax
-        double tax_total = Total + (Total * 0.08f);
+        for(int i = 0; i < 2; i++){
+            
+            System.out.println("Receipt " + i);
+            
+            //Total with tax
+            double tax_total = Total + (Total * 0.08f);
         
-        System.out.println("--------------------");
+            System.out.println("--------------------");
         
-        //First print the items
-        for(Item i : scannedItems){ System.out.println(i.Name + " " + i.Price); }
+            //First print the items
+            for(Item it : scannedItems){ System.out.println(it.Name + " " + it.Price); }
         
-        //---------
-        System.out.println("=====================");
+            //---------
+            System.out.println("=====================");
         
-        System.out.println("Subtotal: " + Total);
-        System.out.println("Tax: " + (Total * 0.08f));
-        System.out.println("Total: " + tax_total);
+            System.out.println("Subtotal: " + Total);
+            System.out.println("Tax: " + (Total * 0.08f));
+            System.out.println("Total: " + tax_total);
+        
+            String last_four = "";
+        
+            System.out.println("========================");
+        
+            System.out.println("Payment Information:");
+        
+            for(int j = cardNumber.length(); j > cardNumber.length()-4; j--){
+                last_four = last_four + cardNumber.charAt(i);
+            }
+        
+            System.out.println("Last four card digits: " + last_four);
+            System.out.println("Authorization Number: " + auth_number);
+
+            System.out.println("========================");
+            
+        }  
         
     }
     

@@ -12,13 +12,13 @@ import java.util.Scanner;
  */
 public class ItemScanner {
         
-    ArrayList<Item> selectedItems = new ArrayList<Item>();
-    
+    ArrayList<Item> selectedItems = new ArrayList<Item>();   
 
     public ArrayList<Item> scanItems(){
         
         Scanner scan = new Scanner(System.in);
-
+        CashierInterface cashier = new CashierInterface();
+        
         //We must take the items from the inventory.
         int selection;
         boolean quit = false;
@@ -26,9 +26,8 @@ public class ItemScanner {
         Item item;
         
         while(true){
-            
-            
-            System.out.print("1.-Milk\n2-Sausage\n3.-BudLight\n4.-Subtotal\n5.-Total\nSelect Item: ");
+                 
+            System.out.print("1.-Milk\n2-Sausage\n3.-BudLight\n4.-Subtotal\n5.-Total\n6.-Cancel CheckOut\nSelect Item: ");
             
             selection = scan.nextInt();
             
@@ -47,9 +46,16 @@ public class ItemScanner {
                     break;
                     
                 case 3:
-                    selectedItems.add(new Item("Budlight", 1.25, true));
-                    item = selectedItems.get(selectedItems.size()-1);
-                    System.out.println(item.Name + " " + item.Price + " is Alcohol: " + item.isAlcohol);
+                    
+                    //Get the confirmation from the cashier.
+                    if(cashier.Confirmation()){
+                        
+                        selectedItems.add(new Item("Budlight", 1.25, true));
+                        item = selectedItems.get(selectedItems.size()-1);
+                        System.out.println(item.Name + " " + item.Price + " is Alcohol: " + item.isAlcohol);
+                    
+                    }
+                    
                     break;
                 
                 case 4:
@@ -59,6 +65,10 @@ public class ItemScanner {
                 case 5:
                     quit = !quit;
                     break;
+                
+                case 6:
+                    System.out.println("Transaction terminated...");
+                    return null;
                 
                 default:
                     System.out.println("Incorrect input!");

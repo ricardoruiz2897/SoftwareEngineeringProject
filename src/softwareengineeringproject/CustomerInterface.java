@@ -15,9 +15,12 @@ import java.util.ArrayList;
 
 public class CustomerInterface {
     
-    CheckOutManager checkout_manager = new CheckOutManager();
+    CheckOutManager checkout_manager;
     
     public void DisplayWelcome(){
+        
+        checkout_manager = new CheckOutManager();
+        
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome!");
         
@@ -52,11 +55,29 @@ public class CustomerInterface {
         Scanner scan = new Scanner(System.in);
         
         System.out.print("Select Payment Method:\n"
-                + "1.-Credit\n2.-Debit\n3.-Cash\nSelect: ");
+                + "1.-Credit\\Debit\n2.-Cash\nSelect: ");
         
         int input = scan.nextInt();
         
         return input;
+    }
+    
+    public void CardPaymentDenied(){
+        System.out.println("Your card was denied...");
+    }
+    
+    public void EnterCashMessage(){
+        System.out.println("Please enter cash: ");
+    }
+    
+    public void Completed(){
+        System.out.println("Transaction has been completed...");
+        DisplayWelcome();
+    }
+    
+    public void Terminate(){
+        System.out.println("Transaction terminated...");
+        DisplayWelcome();
     }
    
 }
