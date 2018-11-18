@@ -9,17 +9,21 @@ package softwareengineeringproject;
  *
  * @author cmpun
  */
+
+import java.util.Scanner;
+
 public class SoftwareEngineeringProject {
 
     /**
      * @param args the command line arguments
      */
     
-    CustomerInterface customer_interface = new CustomerInterface();
     
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        CustomerInterface customer_interface = new CustomerInterface();
+
+        customer_interface.DisplayWelcome();
         
     }
     

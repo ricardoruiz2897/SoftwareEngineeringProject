@@ -11,22 +11,22 @@ import java.util.Scanner;
  * @author cmpun
  */
 public class ItemScanner {
-    
-    Scanner scan = new Scanner(System.in);
+        
     
     public ArrayList<Item> scanItems(){
         
+        Scanner scan = new Scanner(System.in);
+
         //We must take the items from the inventory.
         ArrayList<Item> selectedItems = new ArrayList<Item>();
         int selection;
-        double total_price;
         boolean quit = false;
         
         Item item = new Item();
         
         while(true){
             
-            System.out.print("1.-Milk\n.2-Sausage\n3.-BudLight\n4.-Exit\nSelect Item: ");
+            System.out.print("1.-Milk\n2-Sausage\n3.-BudLight\n4.-Subtotal\n5.-Total\nSelect Item: ");
             
             selection = scan.nextInt();
             
@@ -51,6 +51,10 @@ public class ItemScanner {
                     break;
                 
                 case 4:
+                    GetSubtotalPrice(selectedItems);
+                    break;
+                    
+                case 5:
                     quit = !quit;
                     break;
                 
@@ -59,22 +63,29 @@ public class ItemScanner {
                     break;
                 
             }
-            
+                        
             if(quit){ break; }
             
         }
-        
-        total_price = GetTotalPrice(selectedItems);
+                
         return selectedItems;
+        
     }
     
-    public double GetTotalPrice(ArrayList<Item> scanned){
+    public void GetSubtotalPrice(ArrayList<Item> scanned){
         
         double total_price = 0;
         
-        for(Item item : scanned){ total_price += item.Price; }
+        for(Item item : scanned){ 
+            
+            System.out.println(item.Name);
+            
+            total_price += item.Price; 
+        }
         
-        return total_price;
+
+        
+        System.out.println("\nThe subtotal is: " + total_price + "\n");
     
     }
     

@@ -4,22 +4,24 @@
  * and open the template in the editor.
  */
 package softwareengineeringproject;
-import java.util.Scanner;
+
 /**
  *
  * @author cmpun
  */
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class CustomerInterface {
     
-    Scanner scan = new Scanner(System.in);
-    
-    ItemScanner itemScanner = new ItemScanner();
+    CheckOutManager checkout_manager = new CheckOutManager();
     
     public void DisplayWelcome(){
-        
+        Scanner scan = new Scanner(System.in);
         System.out.println("Welcome!");
         
-        System.out.print("Press 1 to Start Checkout,\n");
+        System.out.print("Press 1 to Start Checkout: \n");
         int input = scan.nextInt();
         
         if(input == 1){
@@ -30,10 +32,29 @@ public class CustomerInterface {
     
     public void ScanItems(){
        
-        System.out.print("Please scan items: ");
-                
-        itemsScanner.scanItems();
+        System.out.println("Please scan items: ");       
+        checkout_manager.RequestScanItems();
         
+    }
+    
+    public void DisplayScannedItems(ArrayList<Item> items){
+        
+        for(Item i : items){ System.out.println(i.Name + " " + i.Price); }
+           
+    }
+    
+    public void DisplayTotal(double total_price){
+        System.out.println("The total price is: " + total_price);
+    }
+    
+    public int Request_Payment(){
+        
+        System.out.print("Select Payment Method:\n"
+                + "1.-Credit\n2.-Debit\n3.-Cash\nSelect: ");
+        
+        int input = scan.nextInt();
+        
+        return input;
     }
    
 }

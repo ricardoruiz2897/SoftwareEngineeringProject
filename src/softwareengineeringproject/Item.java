@@ -14,7 +14,7 @@ public class Item {
     public static String Name;
     public static double Price;
     
-    //Is alcohl=ol if true.
+    //Is alcohol if true.
     public static boolean isAlcohol = false;
     
     public Item(){
