@@ -15,9 +15,11 @@ import java.util.ArrayList;
 public class ReceiptPrinter {
     
     public void PrintReceipt(ArrayList<Item> scannedItems, double Total){
-    
+        
         //Total with tax
         double tax_total = Total + (Total * 0.08f);
+        
+        System.out.println("--------------------");
         
         //First print the items
         for(Item i : scannedItems){ System.out.println(i.Name + " " + i.Price); }

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class CheckOutManager {
     
     ItemScanner itemScanner = new ItemScanner();
-    CustomerInterface customer_interface;
+    
     PaymentManager paymentManager = new PaymentManager();
     ReceiptPrinter receiptPrinter = new ReceiptPrinter();
  
@@ -27,7 +27,7 @@ public class CheckOutManager {
     public void RequestScanItems(){
         
         double Total;
-        
+        CustomerInterface customer_interface = new CustomerInterface();
         //Get scanned items.
         scanned_items = itemScanner.scanItems();
         

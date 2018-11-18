@@ -11,8 +11,8 @@ package softwareengineeringproject;
  */
 public class Item {
     
-    public static String Name;
-    public static double Price;
+    String Name;
+    double Price;
     
     //Is alcohol if true.
     public static boolean isAlcohol = false;
@@ -23,7 +23,6 @@ public class Item {
     public Item(String Name, double Price){
         this.Name = Name;
         this.Price = Price;
-        
     }
     
     public Item(String Name, double Price, boolean isAlcohol){

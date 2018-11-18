@@ -49,6 +49,8 @@ public class CustomerInterface {
     
     public int Request_Payment(){
         
+        Scanner scan = new Scanner(System.in);
+        
         System.out.print("Select Payment Method:\n"
                 + "1.-Credit\n2.-Debit\n3.-Cash\nSelect: ");
         

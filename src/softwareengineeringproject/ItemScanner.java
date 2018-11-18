@@ -12,19 +12,21 @@ import java.util.Scanner;
  */
 public class ItemScanner {
         
+    ArrayList<Item> selectedItems = new ArrayList<Item>();
     
+
     public ArrayList<Item> scanItems(){
         
         Scanner scan = new Scanner(System.in);
 
         //We must take the items from the inventory.
-        ArrayList<Item> selectedItems = new ArrayList<Item>();
         int selection;
         boolean quit = false;
         
-        Item item = new Item();
+        Item item;
         
         while(true){
+            
             
             System.out.print("1.-Milk\n2-Sausage\n3.-BudLight\n4.-Subtotal\n5.-Total\nSelect Item: ");
             
@@ -32,7 +34,7 @@ public class ItemScanner {
             
             switch(selection){
                 
-                case 1: 
+                case 1:  
                     selectedItems.add(new Item("Milk", 3.25));
                     item = selectedItems.get(selectedItems.size()-1);
                     System.out.println(item.Name + " " + item.Price);
@@ -63,7 +65,7 @@ public class ItemScanner {
                     break;
                 
             }
-                        
+            
             if(quit){ break; }
             
         }
