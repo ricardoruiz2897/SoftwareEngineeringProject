@@ -15,9 +15,17 @@ public class Item {
     double Price;
     
     //Is alcohol if true.
-    public static boolean isAlcohol = false;
+    boolean isAlcohol = false;
+    
+    int Discount;
+    int Quantity;
+    
     
     public Item(){
+    }
+    
+    public Item(String Name){
+        this.Name = Name;
     }
     
     public Item(String Name, double Price){
@@ -29,6 +37,14 @@ public class Item {
         this.Name = Name;
         this.Price = Price;
         this.isAlcohol = isAlcohol;
-        
     }
+    
+    public Item(String Name, double Price, boolean isAlcohol, int Discount, int Quantity){
+        this.Name = Name;
+        this.Price = Price;
+        this.isAlcohol = isAlcohol;
+        this.Discount = Discount;
+        this.Quantity = Quantity;
+    }
+    
 }

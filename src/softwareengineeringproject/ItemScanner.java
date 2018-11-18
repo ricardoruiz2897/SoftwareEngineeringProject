@@ -102,4 +102,38 @@ public class ItemScanner {
     }
     
     
+    //This method return name of items that we are going to restock.
+    public ArrayList<String> ScanInventoryItems(ArrayList<Item> inventoryItems){
+        
+        Scanner scan = new Scanner(System.in);
+        
+        //Item to be restocked.
+        ArrayList<String> names = new ArrayList<String>();
+        String restockedItemName;
+        int exit;
+        
+        while(true){
+            
+            //Show the items of the inventory.. Name - Quantity.
+            for(Item item : inventoryItems){
+                System.out.println(item.Name + " " + item.Quantity);
+            }
+        
+            System.out.print("Enter Name of item to be restocked: ");
+            restockedItemName = scan.next();
+            names.add(restockedItemName);
+            
+            System.out.print("Enter 1 to exit, 2 to continue");
+            exit = scan.nextInt();
+            
+            if(exit == 1){
+                break;
+            }
+            
+        }
+        
+        return names;
+        
+    }
+    
 }

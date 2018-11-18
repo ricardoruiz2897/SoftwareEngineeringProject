@@ -1,3 +1,5 @@
-Milk,3.25,false,0,100
-Sausage,2.25,false,0,10
-Budlight,1.25,true,0,1000
+Milk,3.25,false,0,120
+Sausage,2.25,false,0,22
+Budlight,1.25,true,0,2000
+BudIce,23.0,true,0,43
+Coconut,4.0,false,0,2

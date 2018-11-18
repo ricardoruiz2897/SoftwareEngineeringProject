@@ -9,6 +9,9 @@ package softwareengineeringproject;
  *
  * @author cmpun
  */
+
+import java.util.Scanner;
+
 public class RestockerInterface {
     
     public void Displaymenu(){
@@ -33,10 +36,54 @@ public class RestockerInterface {
             ///If it is not there tells restocker about it.
             
             //If it is there add the quatity, to the current quatity.
-            
+            break;
             
         }
         
+        
+    }
+    
+    public int getQuantity(String name){
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter quatity for " + name + " : ");
+        
+        return(scan.nextInt());
+        
+    }
+    
+    public String[] getNewItemInfo(String name){
+        
+        Scanner scan = new Scanner(System.in);
+        
+        String Price;
+        String Quantity;
+        String IsAlcohol;
+        String Discount;
+        
+        System.out.println("Enter info for new item: " + name);
+        
+        System.out.print("Enter price: ");
+        Price = scan.next();
+        
+        System.out.print("Enter quantity: ");
+        Quantity = scan.next();
+        
+        System.out.print("Enter description (true if alcohol / false if not): ");
+        IsAlcohol = scan.next();
+        
+        System.out.print("Enter discount percent: ");
+        Discount = scan.next();
+        
+        //Encapsulate in a string an send.
+        String[] info = new String[4];
+        
+        info[0] = Price;
+        info[1] = Quantity;
+        info[2] = IsAlcohol;
+        info[3] = Discount;
+        
+        return info;
         
     }
     

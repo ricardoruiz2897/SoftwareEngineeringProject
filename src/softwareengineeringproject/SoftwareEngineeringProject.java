@@ -21,9 +21,12 @@ public class SoftwareEngineeringProject {
     
     public static void main(String[] args) {
         // TODO code application logic here
-        CustomerInterface customer_interface = new CustomerInterface();
+        //CustomerInterface customer_interface = new CustomerInterface();
         
-        customer_interface.DisplayWelcome();
+        //customer_interface.DisplayWelcome();
+        
+        InventoryManager inventoryManager = new InventoryManager();
+        inventoryManager.ScanItems();
         
         
         
