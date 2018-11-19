@@ -68,13 +68,25 @@ public class ItemScanner {
                     if(itemNames.contains(selection)){
                         //Look for the item with the name.
                         for(Item item : allItems){
+                            
                             if(item.Name.equals(selection)){
-                                selectedItems.add(item);
+                             
+                                if(!item.isAlcohol){
+                                    selectedItems.add(item);
+                                }else{
+                                    
+                                    //Get cashier confirmation.
+                                    if(cashier.Confirmation()){
+                                        selectedItems.add(item);
+                                    }
+                                    
+                                }                            
+                            
                             }
                         }
                     } else{
-                        System.out.print("Unkwon item or incorrect selection!\n");
-                    }
+                            System.out.print("Unkwon item or incorrect selection!\n");
+                        }
                 
                 }
             
