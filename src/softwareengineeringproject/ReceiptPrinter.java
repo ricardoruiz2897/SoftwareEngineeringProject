@@ -41,8 +41,8 @@ public class ReceiptPrinter {
         
             System.out.println("Payment Information:");
         
-            for(int j = cardNumber.length(); j > cardNumber.length()-4; j--){
-                last_four = last_four + cardNumber.charAt(i);
+            for(int j = cardNumber.length()-1; j >= cardNumber.length()-4; j--){
+                last_four = cardNumber.charAt(j) + last_four; 
             }
         
             System.out.println("Last four card digits: " + last_four);

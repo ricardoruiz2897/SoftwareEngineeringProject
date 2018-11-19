@@ -33,7 +33,8 @@ public class BillCoinReader {
                     + "7.-20 dollars\n"
                     + "8.-50 dollars\n"
                     + "9.-100 dollars\n"
-                    + "10.-Done");
+                    + "10.-Done\n"
+                    + "Enter selection: ");
             
            menu_option = scan.nextInt();
            
@@ -74,7 +75,7 @@ public class BillCoinReader {
            
            }
             
-           if(quit){
+           if(quit || total_entered >= Total){
                break;
            }
         

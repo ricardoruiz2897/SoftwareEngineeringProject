@@ -11,75 +11,80 @@ import java.util.Scanner;
  * @author cmpun
  */
 public class ItemScanner {
-        
-    ArrayList<Item> selectedItems = new ArrayList<Item>();   
-
+    
+    //Item objects.
+    ArrayList<Item> selectedItems = new ArrayList<Item>();  
+    ArrayList<Item> allItems = new ArrayList<Item>(); 
+    
+    //Item names and prices.
+    ArrayList<String> itemNames = new ArrayList<String>();
+    ArrayList<Double> itemPrices = new ArrayList<Double>();
+    
     public ArrayList<Item> scanItems(){
         
         Scanner scan = new Scanner(System.in);
         CashierInterface cashier = new CashierInterface();
         
-        //We must take the items from the inventory.
-        int selection;
-        boolean quit = false;
-        
-        Item item;
-        
-        while(true){
-                 
-            System.out.print("1.-Milk\n2-Sausage\n3.-BudLight\n4.-Subtotal\n5.-Total\n6.-Cancel CheckOut\nSelect Item: ");
+        //We must take the items from the inventory to display this menu.
+        try { 
             
-            selection = scan.nextInt();
+            Inventory inventory = new Inventory("create");
+            allItems = inventory.getInventory();
+   
+        
+            //Get the name and price of the items
+            for(Item item : allItems ){ itemNames.add(item.Name); }
+        
+            String selection;
+        
+            while(true){
             
-            switch(selection){
+                System.out.println("Items in inventory: ");
                 
-                case 1:  
-                    selectedItems.add(new Item("Milk", 3.25));
-                    item = selectedItems.get(selectedItems.size()-1);
-                    System.out.println(item.Name + " " + item.Price);
-                    break;
+                System.out.println("===============");
                 
-                case 2:
-                    selectedItems.add(new Item("Sausage", 2.25));
-                    item = selectedItems.get(selectedItems.size()-1);
-                    System.out.println(item.Name + " " + item.Price);
-                    break;
-                    
-                case 3:
-                    
-                    //Get the confirmation from the cashier.
-                    if(cashier.Confirmation()){
-                        
-                        selectedItems.add(new Item("Budlight", 1.25, true));
-                        item = selectedItems.get(selectedItems.size()-1);
-                        System.out.println(item.Name + " " + item.Price + " is Alcohol: " + item.isAlcohol);
-                    
+                for(Item item : allItems ){
+                    if(item.Quantity > 0){
+                        System.out.println("  " + item.Name + " " + item.Price);
                     }
-                    
-                    break;
+                }
                 
-                case 4:
+                System.out.println("===============");
+                
+                System.out.print("Enter name of item to scan.\n"
+                    + "Enter submit to enter you items. \n"
+                    + "Enter 1 to get Subtotal\n"
+                    + "Enter selection: ");
+                
+                
+                selection = scan.next();
+            
+                if(selection.equals("submit")){
+                    break;
+                } else if(selection.equals("1")){
                     GetSubtotalPrice(selectedItems);
-                    break;
-                    
-                case 5:
-                    quit = !quit;
-                    break;
+                } else{
                 
-                case 6:
-                    System.out.println("Transaction terminated...");
-                    return null;
+                    if(itemNames.contains(selection)){
+                        //Look for the item with the name.
+                        for(Item item : allItems){
+                            if(item.Name.equals(selection)){
+                                selectedItems.add(item);
+                            }
+                        }
+                    } else{
+                        System.out.print("Unkwon item or incorrect selection!\n");
+                    }
                 
-                default:
-                    System.out.println("Incorrect input!");
-                    break;
-                
+                }
+            
             }
-            
-            if(quit){ break; }
-            
+        
+        } catch(Exception E){
+            System.out.println("Problem while retrieving database!");
+            return null;
         }
-                
+   
         return selectedItems;
         
     }
@@ -95,9 +100,7 @@ public class ItemScanner {
             total_price += item.Price; 
         }
         
-
-        
-        System.out.println("\nThe subtotal is: " + total_price + "\n");
+        System.out.println("\nThe subtotal is: " + (total_price + (total_price * 0.08f)) + "\n");
     
     }
     

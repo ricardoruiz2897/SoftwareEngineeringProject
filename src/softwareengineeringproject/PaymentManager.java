@@ -47,7 +47,24 @@ public class PaymentManager {
             
         } else if(cardInfo[0] == "Credit"){
             
-           return paymentInfo;
+            int PIN = 0;
+            
+            String auth_number = auth_center.Verify(cardInfo[1], PIN, Total);
+            
+            if(auth_number != "-1"){
+                
+               paymentInfo[0] = auth_number;
+               paymentInfo[1] = cardInfo[1];
+               
+               return paymentInfo;
+                
+            }else{
+              
+                //Payment was denied
+                paymentInfo[0] = "-1";
+                return paymentInfo;
+
+            }
            
         }else{
             return paymentInfo;

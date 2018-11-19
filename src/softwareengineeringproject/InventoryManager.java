@@ -34,7 +34,7 @@ public class InventoryManager {
        
         try{
             
-             //Pull the list of Items from the database, by creating an instance of Inventory.
+            //Pull the list of Items from the database, by creating an instance of Inventory.
             Inventory inventory = new Inventory("create");
             Items = inventory.getInventory();
             
@@ -91,7 +91,6 @@ public class InventoryManager {
         Inventory inventory = new Inventory();
         inventory.UpdateInventory(items);
         
-    }
-    
+    }    
     
 }

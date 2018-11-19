@@ -24,7 +24,7 @@ public class SoftwareEngineeringProject {
         
         Scanner scan = new Scanner(System.in);
         int option;
-        System.out.println("1.-Customer mode\n2.-Manager Mode\nSelect an option: ");
+        System.out.print("1.-Customer mode\n2.-Restocker Mode\nSelect an option: ");
         
         option = scan.nextInt();
         

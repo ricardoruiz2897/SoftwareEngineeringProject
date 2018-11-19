@@ -21,17 +21,17 @@ public class AuthorizationCenterInterface {
         String auth_number = new String();
 
         if(PIN != 0){
-            System.out.print("Is this info correct?\n"
+            System.out.print("\nIs this info correct?\n"
                 + "Debit Cardnumber: " + cardNumber + "\n"
                     + "PIN: " + PIN + "\n"
                             + "Total: " + (Total + (Total * 0.08f)));
         }else{
-            System.out.print("Is this info correct?\n"
-                + "Debit Cardnumber: " + cardNumber + "\n"
+            System.out.print("\nIs this info correct?\n"
+                + "Credit Cardnumber: " + cardNumber + "\n"
                             + "Total: " + (Total + (Total * 0.08f)));
         }
         
-        System.out.print("1.Approve\n2.Deny\nSelect an option: ");
+        System.out.print("\n1.Approve\n2.Deny\nSelect an option: ");
        
         approval = scan.nextInt();
         
