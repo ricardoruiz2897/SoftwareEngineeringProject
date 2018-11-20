@@ -158,5 +158,23 @@ public class InventoryManager {
         }
     }
     
+    //Decreases the quantity of the objects in the database.
+    public void UpdateDatabaseCustomer(ArrayList<Item> scannedItems){
+        
+        ArrayList<Item> allItems = RetrieveInventory();
+        ArrayList<Item> allNames = new ArrayList<Item>();
+        
+        for(Item i : allItems){
+            for(Item j : scannedItems){
+                if(j.Name.equals(i.Name)){
+                    i.Quantity -= 1;
+                }
+            }
+        }
+        
+        UpdateDatabase(allItems);
+        
+    }
+    
     
 }

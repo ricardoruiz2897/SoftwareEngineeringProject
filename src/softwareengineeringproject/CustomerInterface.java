@@ -55,7 +55,7 @@ public class CustomerInterface {
         Scanner scan = new Scanner(System.in);
         
         System.out.print("Select Payment Method:\n"
-                + "1.-Credit\\Debit\n2.-Cash\nSelect: ");
+                + "1.-Credit\\Debit\n2.-Cash\n3.-Cancel Payment\n4.-Cancel Checkout\nSelect: ");
         
         int input = scan.nextInt();
         
@@ -64,6 +64,10 @@ public class CustomerInterface {
     
     public void CardPaymentDenied(){
         System.out.println("Your card was denied...");
+    }
+    
+    public void PaymentCancelled(){
+        System.out.println("Payment cancelled...");
     }
     
     public void EnterCashMessage(){

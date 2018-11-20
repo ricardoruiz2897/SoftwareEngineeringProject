@@ -56,6 +56,8 @@ public class ManagerInterface {
         
         InventoryManager inventory_manager = new InventoryManager();
         
+        printItems(inventory_manager.RetrieveInventory());
+        
         System.out.print("Enter item to Update: ");
         requested_item = scan.next();
         
@@ -124,6 +126,8 @@ public class ManagerInterface {
         
         InventoryManager inventoryManager = new InventoryManager();
         
+        printItems(inventoryManager.RetrieveInventory());
+        
         System.out.print("Enter item to view: ");
         requested_item = scan.next();
         
@@ -142,6 +146,15 @@ public class ManagerInterface {
             System.out.println("Item not found!!!!");
         }        
         
+    }
+    
+    public void printItems(ArrayList<Item> items){
+        
+        System.out.println("\n=====================\n");
+        for(Item item : items){
+            System.out.println(item.Name + " " + item.Quantity);
+        }
+        System.out.println("\n=====================\n");
     }
     
     public void Exit(){

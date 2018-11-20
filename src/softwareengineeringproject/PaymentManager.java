@@ -67,7 +67,7 @@ public class PaymentManager {
             }
            
         }else{
-            return paymentInfo;
+            return null;
         }
         
     }

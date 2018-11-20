@@ -21,7 +21,7 @@ public class CardReader {
         
         Scanner scan = new Scanner(System.in);
         
-        System.out.print("Select Card type:\n1.-Credit Card\n2.-Debit Card.\nSelect an option: ");
+        System.out.print("Select Card type:\n1.-Credit Card\n2.-Debit Card.\n3.-Cancel Payment\nSelect an option: ");
         
         int type = scan.nextInt();
         

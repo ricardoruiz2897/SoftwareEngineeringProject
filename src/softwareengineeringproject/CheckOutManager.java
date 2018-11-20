@@ -20,8 +20,10 @@ public class CheckOutManager {
     ReceiptPrinter receiptPrinter = new ReceiptPrinter();
     
     TransactionManager transaction_manager = new TransactionManager();
+    InventoryManager inventory_manager = new InventoryManager();
     
     ArrayList<Item> scanned_items = new ArrayList<Item>();
+    
     //1-credit, 2-debit, 3-cash
     int payment_method;
     
@@ -93,9 +95,14 @@ public class CheckOutManager {
                     break;
                 }
                 
-            } else{
+            } else if(payment_method == 3){
                 
                 //Transaction is cancelled.
+                customer_interface.PaymentCancelled();
+                
+            } else {
+                
+                customer_interface.Terminate();
                 
             }
             
@@ -108,6 +115,9 @@ public class CheckOutManager {
             //Print receipt.
             receiptPrinter.PrintReceipt(scanned_items, Total, cardNumber, auth_number);
             
+            //Update the database with the items that were purchased.
+            inventory_manager.UpdateDatabaseCustomer(scanned_items);
+                    
             //Save the transaction log.
             transaction_manager.StoreTransaction(scanned_items, Total);
             

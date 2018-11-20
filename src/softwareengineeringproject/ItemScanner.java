@@ -54,6 +54,7 @@ public class ItemScanner {
                 System.out.print("Enter name of item to scan.\n"
                     + "Enter TOTAL to enter you items. \n"
                     + "Enter 1 to get Subtotal\n"
+                    + "Enter 2 to Cancel Checkout.\n"    
                     + "Enter selection: ");
                 
                 
@@ -63,6 +64,8 @@ public class ItemScanner {
                     break;
                 } else if(selection.equals("1")){
                     GetSubtotalPrice(selectedItems);
+                } else if(selection.equals("2")){
+                    return null;
                 } else{
                 
                     if(itemNames.contains(selection)){

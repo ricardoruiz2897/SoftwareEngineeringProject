@@ -22,8 +22,8 @@ public class TransactionLog {
         //Push the transaction in the database.
         try{
             
-            FileWriter fileWriter = new FileWriter("C:\\Users\\cmpun\\Desktop\\SoftwareEngineeringProject\\src\\softwareengineeringproject\\TransactionLog.txt");
-            
+            FileWriter fileWriter = new FileWriter("C:\\Users\\cmpun\\Desktop\\SoftwareEngineeringProject\\src\\softwareengineeringproject\\TransactionLog.txt", true);
+
             fileWriter.write(new_transaction.Date + "," + new_transaction.processed_items + "," + new_transaction.Total + "\n");
             
             fileWriter.close();

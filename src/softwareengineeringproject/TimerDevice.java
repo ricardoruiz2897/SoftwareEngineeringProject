@@ -28,13 +28,21 @@ public class TimerDevice {
 
         public void run(){
             
-            //Only print is we are past 12:00:00 am and before 12:00:04am
+            //Only print is we are within 5 seconds before midnight
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");  
+            Date date = new Date();  
             
-            String DailyReport = BuildDailyReport();
-            String InventoryReport = BuildInventoryReport();
+            String formatted_date = formatter.format((date)); 
             
-            sprinter.PrintDailyReport(DailyReport);
-            sprinter.PrintInventoryReport(InventoryReport);
+            if(TimeInRange(formatted_date)){
+                
+                String DailyReport = BuildDailyReport();
+                String InventoryReport = BuildInventoryReport();
+            
+                sprinter.PrintDailyReport(DailyReport);
+                sprinter.PrintInventoryReport(InventoryReport);
+            
+            }            
             
             //Cancel current.
             timer.cancel();
@@ -54,6 +62,24 @@ public class TimerDevice {
         timer.schedule(new MakeTask(), seconds);
         
     }
+    
+    //Given a string in format hh:mm:ss, true if it is within a range from 12:00:00
+    private Boolean TimeInRange(String time){
+        
+        String[] t = time.split(":");
+        
+        int hours = Integer.parseInt(t[0]);
+        int minutes = Integer.parseInt(t[1]);
+        int seconds = Integer.parseInt(t[2]);
+        
+        if(hours == 11 && minutes == 59 && (seconds >= 55)){
+            return true;
+        }
+        
+        return false;
+        
+    }
+    
     
     private String BuildDailyReport(){
         
@@ -115,7 +141,22 @@ public class TimerDevice {
     
         String report = "";
         
-        return report;
+        //Get the current date in a string.
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");  
+        Date date = new Date();  
+        
+        String formatted_date = formatter.format((date)); 
+        
+        InventoryManager inventory_manager = new InventoryManager();
+        ArrayList<Item> Items = inventory_manager.RetrieveInventory();
+         
+        String report_title = "Inventory as of: " + formatted_date;
+        
+        for(Item item : Items){
+            report = report + item.Name + " " + item.Quantity + "\n";
+        }
+        
+        return report_title + "\n" + report;
         
     }
     
