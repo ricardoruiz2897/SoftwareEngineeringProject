@@ -47,7 +47,7 @@ public class CustomerInterface {
     }
     
     public void DisplayTotal(double total_price){
-        System.out.println("The total price is: " + total_price);
+        System.out.println("The total price is: " + (total_price + (total_price * 0.08f)));
     }
     
     public int Request_Payment(){

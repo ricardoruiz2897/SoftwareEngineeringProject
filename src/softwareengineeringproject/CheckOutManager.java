@@ -18,7 +18,8 @@ public class CheckOutManager {
     
     PaymentManager paymentManager = new PaymentManager();
     ReceiptPrinter receiptPrinter = new ReceiptPrinter();
- 
+    
+    TransactionManager transaction_manager = new TransactionManager();
     
     ArrayList<Item> scanned_items = new ArrayList<Item>();
     //1-credit, 2-debit, 3-cash
@@ -103,8 +104,13 @@ public class CheckOutManager {
         if(terminate){
             customer_interface.Terminate();
         }else{
+            
             //Print receipt.
             receiptPrinter.PrintReceipt(scanned_items, Total, cardNumber, auth_number);
+            
+            //Save the transaction log.
+            transaction_manager.StoreTransaction(scanned_items, Total);
+            
             customer_interface.Completed();
         }
         

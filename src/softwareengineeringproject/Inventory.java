@@ -21,10 +21,6 @@ public class Inventory {
      //Creates Inventoty.
      public Inventory(String create) throws Exception{
          
-        /*Items.add(new Item("Milk", 3.25));
-        Items.add(new Item("Sausage", 2.25));
-        Items.add(new Item("BudLight", 1.25, true));*/
-         
         //Get the File.
         File file = new File("C:\\Users\\cmpun\\Desktop\\SoftwareEngineeringProject\\src\\softwareengineeringproject\\DatabaseFile.txt");
          

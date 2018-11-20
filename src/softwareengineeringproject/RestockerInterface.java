@@ -52,6 +52,10 @@ public class RestockerInterface {
         
     }
     
+    public void DisplayQuantity(String name, int quantity){
+        System.out.println("The new quantity for: " + name + " is " + quantity);
+    }
+    
     public String[] getNewItemInfo(String name){
         
         Scanner scan = new Scanner(System.in);

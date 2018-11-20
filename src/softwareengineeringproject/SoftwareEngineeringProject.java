@@ -24,13 +24,16 @@ public class SoftwareEngineeringProject {
         
         Scanner scan = new Scanner(System.in);
         int option;
-        System.out.print("1.-Customer mode\n2.-Restocker Mode\n3.-Manager Mode\nSelect an option: ");
+        System.out.print("1.-Customer Mode\n2.-Restocker Mode\n3.-Manager Mode\nSelect an option: ");
         
         option = scan.nextInt();
         
         CustomerInterface customer_interface = new CustomerInterface();
         InventoryManager inventoryManager = new InventoryManager();
         ManagerInterface manager_interface = new ManagerInterface();
+        
+        //Start timer.
+        TimerDevice t = new TimerDevice();
 
         switch(option){
             

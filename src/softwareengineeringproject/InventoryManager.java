@@ -49,9 +49,9 @@ public class InventoryManager {
                     for(Item item : Items){
                         if(item.Name.equals(name)){
                             item.Quantity += restockerInterface.getQuantity(name);
+                            restockerInterface.DisplayQuantity(item.Name, item.Quantity);
                         }
                     }
-                    
                     
                 }else{
                     
@@ -106,11 +106,12 @@ public class InventoryManager {
                 if(item.Name.equals(updated_item.Name)){
                     found = true;
                     item.setPrice(updated_item.Price);
+                    item.setDiscount(updated_item.Discount);
+                    item.setIsAlcohol(updated_item.isAlcohol);
                 }
             }
             
             if(found){
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
                 UpdateDatabase(allItems);
                 return true;
             }else{
@@ -149,9 +150,7 @@ public class InventoryManager {
     public ArrayList<Item> RetrieveInventory(){
         try{
             
-            Inventory inventory = new Inventory("create");
-            ArrayList<Item> allItems = new ArrayList<Item>();
-            
+            Inventory inventory = new Inventory("create");            
             return(inventory.getInventory());
             
         }catch(Exception E){
