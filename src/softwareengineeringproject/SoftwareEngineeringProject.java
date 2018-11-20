@@ -24,12 +24,13 @@ public class SoftwareEngineeringProject {
         
         Scanner scan = new Scanner(System.in);
         int option;
-        System.out.print("1.-Customer mode\n2.-Restocker Mode\nSelect an option: ");
+        System.out.print("1.-Customer mode\n2.-Restocker Mode\n3.-Manager Mode\nSelect an option: ");
         
         option = scan.nextInt();
         
         CustomerInterface customer_interface = new CustomerInterface();
         InventoryManager inventoryManager = new InventoryManager();
+        ManagerInterface manager_interface = new ManagerInterface();
 
         switch(option){
             
@@ -37,6 +38,9 @@ public class SoftwareEngineeringProject {
             break;
             
             case 2: inventoryManager.ScanItems();
+            break;
+            
+            case 3: manager_interface.DisplayMenu();
             break;
             
             default: System.out.println("Invalid input!");

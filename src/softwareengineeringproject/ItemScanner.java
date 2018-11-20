@@ -52,14 +52,14 @@ public class ItemScanner {
                 System.out.println("===============");
                 
                 System.out.print("Enter name of item to scan.\n"
-                    + "Enter submit to enter you items. \n"
+                    + "Enter TOTAL to enter you items. \n"
                     + "Enter 1 to get Subtotal\n"
                     + "Enter selection: ");
                 
                 
                 selection = scan.next();
             
-                if(selection.equals("submit")){
+                if(selection.equals("TOTAL")){
                     break;
                 } else if(selection.equals("1")){
                     GetSubtotalPrice(selectedItems);
@@ -85,7 +85,7 @@ public class ItemScanner {
                             }
                         }
                     } else{
-                            System.out.print("Unkwon item or incorrect selection!\n");
+                            System.out.print("Unknown item or incorrect selection!\n");
                         }
                 
                 }

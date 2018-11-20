@@ -47,4 +47,16 @@ public class Item {
         this.Quantity = Quantity;
     }
     
+    public void setPrice(double Price){
+        this.Price = Price;
+    }
+    
+    public void setIsAlcohol(boolean isAlcohol){
+        this.isAlcohol = isAlcohol;
+    }
+    
+    public void setDiscount(int Discount){
+        this.Discount = Discount;
+    }
+    
 }

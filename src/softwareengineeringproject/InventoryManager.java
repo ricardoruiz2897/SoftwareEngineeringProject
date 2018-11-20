@@ -21,12 +21,6 @@ public class InventoryManager {
     
     RestockerInterface restockerInterface = new RestockerInterface();
     
-    //This is the class that talks to the "database file."
-    public void StockItem(String itemName, int quantity){
-        
-
-    }
-    
     public void ScanItems(){
         
         ArrayList<String> scannedItems = new ArrayList<String>();
@@ -86,11 +80,84 @@ public class InventoryManager {
         
     }
     
+    //Updates an item given a list of items
     public void UpdateDatabase(ArrayList<Item> items){
         
         Inventory inventory = new Inventory();
         inventory.UpdateInventory(items);
         
-    }    
+    }
+    
+    //Updates the data base given an updated item. Return true if updated successfully.
+    public boolean UpdateDatabase(Item updated_item){
+        
+        //item must
+        ArrayList<Item> updatedList = new ArrayList<Item>();
+        ArrayList<Item> allItems = new ArrayList<Item>();
+        
+        boolean found = false;
+        
+        try{
+            
+            Inventory inventory = new Inventory("create");
+            allItems = inventory.getInventory();
+            
+            for(Item item : allItems){
+                if(item.Name.equals(updated_item.Name)){
+                    found = true;
+                    item.setPrice(updated_item.Price);
+                }
+            }
+            
+            if(found){
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
+                UpdateDatabase(allItems);
+                return true;
+            }else{
+                return false;
+            }
+            
+            
+        } catch(Exception E){
+            return false;
+        }
+    
+    }
+    
+    //Returns an item given a name, return "not found", if the item is not on the database.
+    public Item RetrieveItem(String name){
+        
+        try{
+            
+            Inventory inventory = new Inventory("create");
+            ArrayList<Item> allItems = new ArrayList<Item>();
+            allItems = inventory.getInventory();
+            
+            for(Item item : allItems){
+                if(item.Name.equals(name)){
+                    return item;
+                }
+            }
+            
+            return null;
+        
+        } catch(Exception E){
+            return null;
+        }
+    }
+    
+    public ArrayList<Item> RetrieveInventory(){
+        try{
+            
+            Inventory inventory = new Inventory("create");
+            ArrayList<Item> allItems = new ArrayList<Item>();
+            
+            return(inventory.getInventory());
+            
+        }catch(Exception E){
+            return null;
+        }
+    }
+    
     
 }
