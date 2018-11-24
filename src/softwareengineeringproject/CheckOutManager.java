@@ -7,7 +7,11 @@ package softwareengineeringproject;
 
 /**
  *
- * @author cmpun
+ * Ricardo Ruiz R11476487
+ * Arusha Herath R11473911
+ * Sterling Collin R11334958
+ * Merrell Reed R00894900
+ *
  */
 
 import java.util.ArrayList;
